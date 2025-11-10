@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ashish Sharma — Power Bank Studio Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+  :root{
+    --bg1: #0f1724; --bg2: #081026; --muted: #9aa7b8; --accent: #6ee7b7; --accent-2:#7dd3fc;
+    --glass-border: rgba(255,255,255,0.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Arial;background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(34,197,94,0.04), transparent 6%),
+    linear-gradient(180deg,var(--bg1), var(--bg2));color:#e6eef6;padding:28px;}
+  .wrap{max-width:1200px;margin:0 auto;}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+  .brand{display:flex;gap:12px;align-items:center;color:inherit;text-decoration:none}
+  .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    box-shadow:0 8px 30px rgba(20,30,40,0.35);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#042;}
+  h1{margin:0;font-size:1.05rem}
+  .nav-actions{display:flex;gap:10px}
+  .btn{background:transparent;border:1px solid var(--glass-border);padding:8px 12px;border-radius:10px;color:inherit;cursor:pointer}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#012;border:0}
+  .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:26px}
+  .hero-left h2{margin:0 0 12px 0;font-size:clamp(22px,3.6vw,34px);color:#e9fbf7}
+  .hero-left p{color:var(--muted);margin:0 0 18px}
+  .hero-preview{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:20px;border:1px solid var(--glass-border);}
+  .products{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:18px}
+  .product{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.03);transition:transform .24s;box-shadow:0 10px 30px rgba(2,8,20,0.45)}
+  .product:hover{transform:translateY(-8px)}
+  .p-top{display:flex;gap:12px;align-items:flex-start}
+  .scene{width:120px;height:120px;perspective:1100px;flex-shrink:0}
+  .card{width:100%;height:100%;border-radius:12px;transform-style:preserve-3d;transition:transform .32s;position:relative;overflow:visible}
+  .card img{width:100%;height:100%;object-fit:cover;display:block;transform:translateZ(48px) scale(1.02);transition:transform .38s;filter:drop-shadow(0 18px 30px rgba(5,10,20,0.55));border-radius:10px}
+  .title{font-weight:700;margin:0 0 6px;color:#eefef6}
+  .desc{margin:0;color:var(--muted);font-size:0.9rem}
+  .price{font-weight:800;color:#dffaf0}
+  .rating{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:999px;color:#dffaf0}
+  footer{margin-top:28px;color:var(--muted);text-align:center}
+  .about{margin-top:40px;text-align:center;color:var(--muted)}
+  @media (max-width:980px){.hero{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#"><div class="logo">PB</div><div><h1>Power Bank Studio</h1><div style="font-size:12px;color:var(--muted)">Student project by Ashish Sharma</div></div></a>
+      <div class="nav-actions"><button class="btn">Collections</button><button class="btn">Support</button><button class="btn btn-primary" id="shopBtn">Shop Now</button></div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <h2>My 3D Power Bank Store Concept — designed by Ashish Sharma</h2>
+        <p>Interactive demo to explore 3D product previews, responsive layouts and micro-interactions using HTML, CSS and JavaScript.</p>
+        <div style="display:flex;gap:12px;margin-top:12px"><div style="background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:10px">Free shipping • IN</div><div style="background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:10px">30-day returns</div></div>
+      </div>
+
+      <div class="hero-preview" aria-hidden="true">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div class="scene"><div class="card float" data-depth="46"><img src="/images/powerbank_transparent_tech_15k.jpg" alt="Featured"></div></div>
+          <div><div style="font-weight:800;font-size:1.06rem">Transparent Tech — 15000mAh</div><div style="color:var(--muted);margin-top:6px">Visible internals with fast-charge USB-C 45W. Lightweight chassis.</div><div style="display:flex;gap:8px;margin-top:12px;align-items:center"><div class="rating">4.8 ★</div><div style="color:var(--muted)">1.2k reviews</div><button class="btn btn-primary" id="quick-feature">Quick view</button></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><h3 style="margin:0">Featured Products</h3><div style="color:var(--muted)">Showing 5 results</div></div>
+      <div class="products" id="products">
+        <article class="product" data-id="1" data-title="Sleek Blue Power Bank" data-price="899" data-img="/images/powerbank_blue_compact_5k.jpg" data-cap="5000mAh">
+          <div class="p-top"><div class="scene"><div class="card" data-depth="26"><img src="/images/powerbank_blue_compact_5k.jpg" alt="Sleek Blue"></div></div>
+            <div class="p-body"><div class="title">Sleek Blue Power Bank</div><div class="desc">5000mAh • Ultra-compact • Pocket friendly</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><div><div class="price">₹899</div><div class="meta" style="color:var(--muted)">INR • Fast-charge</div></div><div class="rating">4.7 ★</div></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn" onclick="openQuickView(this)">Quick view</button><button class="btn btn-primary" onclick="addToCart(this)">Buy</button></div></div></div>
+        </article>
+
+        <article class="product" data-id="2" data-title="Rugged Adventure Power Bank" data-price="2499" data-img="/images/powerbank_orange_rugged_30k.jpg" data-cap="30000mAh">
+          <div class="p-top"><div class="scene"><div class="card" data-depth="20"><img src="/images/powerbank_orange_rugged_30k.jpg" alt="Rugged"></div></div>
+            <div class="p-body"><div class="title">Rugged Adventure Power Bank</div><div class="desc">30000mAh • IP67 • Multi-port fast charging</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><div class="price">₹2,499</div><div class="rating">4.6 ★</div></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn" onclick="openQuickView(this)">Quick view</button><button class="btn btn-primary" onclick="addToCart(this)">Buy</button></div></div></div>
+        </article>
+
+        <article class="product" data-id="3" data-title="Elegant Slim Power Bank" data-price="1299" data-img="/images/powerbank_silver_slim_10k.jpg" data-cap="10000mAh">
+          <div class="p-top"><div class="scene"><div class="card" data-depth="28"><img src="/images/powerbank_silver_slim_10k.jpg" alt="Slim"></div></div>
+            <div class="p-body"><div class="title">Elegant Slim Power Bank</div><div class="desc">10000mAh • Metallic finish • Slim profile</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><div class="price">₹1,299</div><div class="rating">4.5 ★</div></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn" onclick="openQuickView(this)">Quick view</button><button class="btn btn-primary" onclick="addToCart(this)">Buy</button></div></div></div>
+        </article>
+
+        <article class="product" data-id="4" data-title="Classic Black Power Bank" data-price="1799" data-img="/images/powerbank_black_classic_20k.jpg" data-cap="20000mAh">
+          <div class="p-top"><div class="scene"><div class="card" data-depth="22"><img src="/images/powerbank_black_classic_20k.jpg" alt="Classic"></div></div>
+            <div class="p-body"><div class="title">Classic Black Power Bank</div><div class="desc">20000mAh • Reliable • High-output USB-C</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><div class="price">₹1,799</div><div class="rating">4.6 ★</div></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn" onclick="openQuickView(this)">Quick view</button><button class="btn btn-primary" onclick="addToCart(this)">Buy</button></div></div></div>
+        </article>
+
+        <article class="product" data-id="5" data-title="Transparent Tech Power Bank" data-price="1999" data-img="/images/powerbank_transparent_tech_15k.jpg" data-cap="15000mAh">
+          <div class="p-top"><div class="scene"><div class="card" data-depth="30"><img src="/images/powerbank_transparent_tech_15k.jpg" alt="Transparent"></div></div>
+            <div class="p-body"><div class="title">Transparent Tech Power Bank</div><div class="desc">15000mAh • Futuristic • Fast-charge</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px"><div class="price">₹1,999</div><div class="rating">4.8 ★</div></div><div style="display:flex;gap:8px;margin-top:12px"><button class="btn" onclick="openQuickView(this)">Quick view</button><button class="btn btn-primary" onclick="addToCart(this)">Buy</button></div></div></div>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="about">
+      <h3>About This Project</h3>
+      <p>This website is a student project made by <strong>Ashish Sharma</strong> to explore 3D visuals, modern UI design, and responsive layouts using HTML, CSS, and JavaScript. All products shown are sample/demo items.</p>
+      <p>📧 <a href="mailto:ashish@example.com" style="color:var(--accent)">ashish@example.com</a></p>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Ashish Sharma — Student project. Mock payments only.
+    </footer>
+  </div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  (function(){
+    const maxRotate = 12;
+    const clamp = (v,a,b)=>Math.max(a,Math.min(b,v));
+    document.querySelectorAll('.scene').forEach(scene=>{
+      const card = scene.querySelector('.card');
+      const img = card && card.querySelector('img');
+      if(!card||!img) return;
+      function onMove(e){
+        const rect=scene.getBoundingClientRect();
+        const clientX = e.clientX ?? (e.touches && e.touches[0].clientX);
+        const clientY = e.clientY ?? (e.touches && e.touches[0].clientY);
+        if(!clientX||!clientY) return;
+        const x = clientX - rect.left, y = clientY - rect.top, cx = rect.width/2, cy = rect.height/2;
+        const px = clamp((x-cx)/cx,-1,1), py = clamp((y-cy)/cy,-1,1);
+        const depth = Number(card.dataset.depth)||20;
+        const ry = px*maxRotate, rx = -py*maxRotate, scale=1.03;
+        card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(${scale})`;
+        img.style.transform = `translateZ(${depth}px) translate(${ -px*(depth*0.45) }px, ${ -py*(depth*0.25) }px) scale(1.04)`;
+      }
+      function onLeave(){ card.style.transition='transform 500ms cubic-bezier(.2,.9,.2,1)'; img.style.transition='transform 600ms cubic-bezier(.2,.9,.2,1)'; card.style.transform=''; img.style.transform=''; setTimeout(()=>{card.style.transition=''; img.style.transition='';},650); }
+      scene.addEventListener('mousemove', onMove); scene.addEventListener('touchmove', onMove,{passive:true});
+      scene.addEventListener('mouseleave', onLeave); scene.addEventListener('touchend', onLeave);
+    });
+  })();
+  function openQuickView(btn){ const product = btn.closest('.product'); if(!product) return; alert('Quick view: '+(product.dataset.title||'Item')); }
+  function addToCart(btn){ const product = btn.closest('.product'); if(!product) return; alert('Added to cart: '+(product.dataset.title||'Item')); }
+</script>
+</body>
+</html>
